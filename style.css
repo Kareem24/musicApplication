@@ -88,10 +88,12 @@ button{
         
     }
     .backBtn:hover ,.list-Btn:hover{
-        background-color: white;
         cursor: pointer;
         transform: scale(1.2);
     }
+        .backBtn:hover{
+            color: black;
+        }
     .backBtn:active ,.list-Btn:active,.controls .controlBtn:active{
         transform: scale(0.9);
     }
@@ -227,6 +229,7 @@ button{
     border: none;
     outline: none;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .footer-links .mult-1{
     font-size: 0.8rem;
