@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <title>Music App </title>
 </head>
 <body>
@@ -12,50 +14,62 @@
         <div class="music-container">
             <!-- NAVBAR -->
             <nav class="navbar">
-                <button class="backBtn">&larr;</button>
+                <button class="backBtn">
+                    <i class='bx bx-left-arrow-alt' ></i>
+                </button>
 
-                <h3>My books</h3>
+                <h3 class="shelf">My books</h3>
 
-                <button class="list">&#183;&#183;&#183;</button>
+                <button class="list-Btn">&#183;&#183;&#183;</button>
             </nav>
             <!-- TRACK IMAGES  -->
             <div class="track-img">
-                <img src="images/cart-02.jpg" alt="">
+                <img src="images/image.jpg" alt="track img">
             </div>
             <!-- SONG TITLE AND ARTISTE NAME -->
             <div class="title-bar">
-                <p>Mark Marison</p>
+                <p class="artist">Mark Marison</p>
 
-                <h2>
+                <h2 class="song-title">
                     The Subtle Art of Not Giving A f*ck
                 </h2>
+
+                <p class="chapter">chapter 1</p>
             </div>
 
             <!-- MUSIC PLAYER RANGE -->
             <div class="range">
-                <input type="range" name="" id="" min="0" max="100" value="50">
+                <input type="range" name="" id="range" min="0" max="100" value="50">
             </div>
             <div class="progress-time">
-                <small>00:03:33</small>
-                <p>left in the character</p>
+                <small class="time">00:03:33</small>
+                <small class="default">left in the character</small>
             </div>
             <div class="controls">
                 <!-- previous button -->
-                <button class="btn controls prev">prev</button>
+                <button class="controlBtn prev">
+                    <i class='bx bx-skip-previous' ></i>
+                </button>
                 <!-- backward with 30s -->
-                <button class="btn controls sub">-30s</button>
+                <button class="controlBtn sub">-30s</button>
                 <!-- pause and play button -->
-                <button class="btn controls play">play</button>
+                <button class="controlBtn play">
+                    <i class='bx bx-pause'></i>
+                </button>
                 <!-- forward with 30s -->
-                <button class="btn controls add">+30s</button>
+                <button class="controlBtn add">+30s</button>
                 <!-- next buttton -->
-                <button class="btn controls next">nxt</button>
+                <button class="controlBtn next">
+                    <i class='bx bx-skip-next' ></i>
+                </button>
             </div>
-            <footer>
-                <button class="bookmark">bok</button>
-                <button class="toggle-mode">drk</button>
-                <button class="mult-1">mult</button>
-                <button class="list">list</button>
+            <footer class="footer-links">
+                <button class="btn bookmark"><i class='bx bxs-bookmark-star'></i></button>
+                <button class="btn toggle-mode">
+                    <i class='bx bxs-moon' ></i>
+                </button>
+                <button class="btn mult-1">1.0x</button>
+                <button class="btn detail"><i class='bx bx-detail'></i></button>
             </footer>
         </div>
 
