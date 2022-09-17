@@ -1,149 +1,169 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+@import"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css";
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
-button{
+
+button {
     color:black;
 }
 
-.main{
-    background: linear-gradient(to bottom,rgba(0,0,0,0.7),rgba(0,0,0,0.9));
+.main {
+    background: #686868;
     width: 100%;
-    height:auto;
+    height: 100vh;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
 }
+
 /* The music container starts here */
-.music-container{
+.music-container {
     max-width: 300px;
-    height: auto;
-    margin: 30px auto;
-    /* transform: translateY(50%); */
-    padding: 0.875rem 0.937rem;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.654));
-    border-radius: 25px;
-    box-shadow: inset  -3px -3px 7px 3px rgba(255,255,255,0.7),inset 3px 3px 5px 7px black;
+    height: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.654));
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
     position: relative;
 }
 
+/* Navbar component */
 
-.music-container::after{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 25px;
-    box-shadow: -3px -3px 7px 3px rgba(255,255,255,0.7), 3px 3px 5px 7px black;
-    z-index: -1;
-}
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 0;
+    margin: 5px 0;
 }
 
- /* the list and back button */
-
-    /* back button */
-    .backBtn ,.list-Btn{
-     padding: 0.625rem;
-     background-color:rgba(95, 91, 91, 0.05);
-     box-shadow:  -3px -3px 2px -2px rgba(255,255,255,0.7),  3px 3px 2px black;
-     color: #5f5c5c;
-     border: 1px solid rgba(0,0,0,0);
-     outline: none;
-     border-radius: 50%;
-     font-size: 1.25rem;
-     font-weight: 900;
-     font-family: serif;
-     position: relative;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     
-    }
-    /* .backBtn{
-        color: blue;
-    } */
-
+.prev-btn, 
+.list-Btn {
+    padding: 7px;
+    background-color: rgba(95, 91, 91, 0.05);
+    box-shadow:  -3px -3px 2px -2px rgba(255,255,255,0.7),  3px 3px 2px black;
+    color: #0099ff;
+    border: 1px solid rgba(0,0,0,0);
+    outline: none;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: 900;
+    font-family: serif;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1000ms linear;
+    
+}
    
     
-    .backBtn::after ,.list-Btn::after{
-        content: '';
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        background: transparent;
-        border-radius: 50%;
-        box-shadow:inset  -3px -3px 7px rgba(255,255,255,0.7), inset 3px 3px 5px black;
-        
-    }
-    .backBtn:hover ,.list-Btn:hover{
-        cursor: pointer;
-        transform: scale(1.2);
-    }
-        .backBtn:hover{
-            color: black;
+.prev-btn::after,
+.list-Btn::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 
+        inset  -1px -1px 10px rgba(95, 91, 91, 0.1), 
+        inset 3px 3px 10px rgba(0,0,0,0.5)
+    ;
+    cursor: pointer;
+    
+}
+
+.list-Btn:hover{
+    transform: scale(1.1);
+}
+
+/* .prev-btn:hover ,.list-Btn:hover{
+    cursor: pointer;
+    animation-name: btnHover;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    
+    @keyframes btnHover {
+        0%{
+            transform: scale(0);
         }
-    .backBtn:active ,.list-Btn:active,.controls .controlBtn:active{
-        transform: scale(0.9);
+
+        100%{
+            transform: scale(0.9);
+        }
     }
+} */
+
+.prev-btn:hover{
+    color: black;
+}
+
+.prev-btn:active ,.list-Btn:active,.controls .controlBtn:active{
+    animation-name: btnHover;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
     
-    .shelf{
-        font-weight: 300;
-    }
+    @keyframes btnHover {
+        0%{
+            transform: scale(0);
+        }
 
-     /* the track image */
-    .track-img {
-        /* max-width: 100px; */
-        text-align: center;
-        display: block;
-
+        100%{
+            transform: scale(0.9);
+        }
     }
+}
+    
+.shelf{
+    font-weight: 300;
+}
+
+/* the track image */
+
+.track-img {
+    text-align: center;
+    display: block;
+
+}
 
    
-    .track-img img{
-        display: block;
-        width:65%;
-        height: 13rem;
-        margin: 1.5rem auto;
-        border-radius: 12px;
-        box-shadow:  -3px -3px 7px 3px rgba(255,255,255,0.7), 3px 3px 5px 7px black;
-        
-    }
+.track-img img{
+    display: block;
+    width:65%;
+    height: 13rem;
+    margin: 1rem auto;
+    border-radius: 12px;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.8);    
+}
 
-    /* The artist and the music title start here */
-    .artist{
-        font-size: 0.88rem;
-        font-weight: 400;
-        line-height: 0.5;
-    }
-    .song-title{
-        font-size: 1.25rem;
-        line-height: 20px;
-        margin: 8px 0 9px;
-    }
-    .chapter{
-        font-weight: 300;
-        font-size: 0.81re;
-        margin-bottom: 4px;
-        color: #5f5c5c;
-        letter-spacing: -1px;
-    }
-    #range{
-        width: 100%;
-        color: rgb(255, 0, 191);
-        display: block;
-    }
+/* Music Info Compnent */
+
+.artist{
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 0.5;
+    margin-bottom: 1.5rem;
+}
+
+.song-title{
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+#range{
+    width: 100%;
+    color: rgb(255, 0, 191);
+    display: block;
+}
     /*  the time progress */
     .progress-time{
         display: flex;
