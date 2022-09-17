@@ -12,29 +12,28 @@
 <body>
     <main class="main">
         <div class="music-container">
+
             <!-- NAVBAR -->
             <nav class="navbar">
-                <button class="backBtn">
-                    <i class='bx bx-left-arrow-alt' ></i>
+                <button class="prev-btn" id="prev-btn">
+                    <i class='bx bx-left-arrow-alt' ></i>&#183;&#183;&#183;
                 </button>
 
-                <h3 class="shelf">My books</h3>
+                <h3 class="shelf">Music</h3>
 
-                <button class="list-Btn">&#183;&#183;&#183;</button>
+                <button class="list-Btn" id="list-btn">&#183;&#183;&#183;</button>
             </nav>
+
             <!-- TRACK IMAGES  -->
             <div class="track-img">
                 <img src="images/image.jpg" alt="track img">
             </div>
+
             <!-- SONG TITLE AND ARTISTE NAME -->
             <div class="title-bar">
+                <p class="song-title">The Subtle Art of Not Giving A f*ck</p>
+
                 <p class="artist">Mark Marison</p>
-
-                <h2 class="song-title">
-                    The Subtle Art of Not Giving A f*ck
-                </h2>
-
-                <p class="chapter">chapter 1</p>
             </div>
 
             <!-- MUSIC PLAYER RANGE -->
@@ -48,7 +47,7 @@
             <div class="controls">
                 <!-- previous button -->
                 <button class="controlBtn prev">
-                    <i class='bx bx-skip-previous' ></i>
+                    <i class="bi bi-skip-backward-fill"></i>
                 </button>
                 <!-- backward with 30s -->
                 <button class="controlBtn sub">-30s</button>
@@ -60,7 +59,7 @@
                 <button class="controlBtn add">+30s</button>
                 <!-- next buttton -->
                 <button class="controlBtn next">
-                    <i class='bx bx-skip-next' ></i>
+                    <i class="bi bi-skip-forward-fill"></i>
                 </button>
             </div>
             <footer class="footer-links">
