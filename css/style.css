@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500&display=swap');
-@import"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css";
 
 * {
     margin: 0;
@@ -21,10 +20,6 @@
     --white: #212121;
 }
 
-button {
-    color: #000;
-}
-
 .main {
     background: var(--BG-black);
     width: 100%;
@@ -33,7 +28,8 @@ button {
     padding: 20px 0;
 }
 
-/* The music container starts here */
+/* Music container component */
+
 .music-container {
     max-width: 300px;
     height: 100%;
@@ -46,6 +42,7 @@ button {
 }
 
 /* Navbar component */
+
 .navbar {
     display: flex;
     align-items: center;
@@ -55,70 +52,19 @@ button {
 
 .logo {
     color: var(--white);
-    font-weight: 300;
+    font-weight: 500;
 }
 
-.prev-btn, 
-.list-Btn {
-    padding: 7px;
-    background-color: rgba(95, 91, 91, 0.05);
-    box-shadow:  -3px -3px 2px -2px rgba(255,255,255,0.7),  3px 3px 2px black;
-    color: #0099ff;
-    border: 1px solid rgba(0,0,0,0);
-    outline: none;
-    border-radius: 50%;
-    font-size: 1.25rem;
-    font-weight: 900;
-    font-family: serif;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 1000ms linear;
-    
+.nav_btn i {
+    color: var(--white);
 }
-   
-    
-.prev-btn::after,
-.list-Btn::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
+
+.nav_btn {
+    font-size: 1.2rem;
+    border-radius: 100%;
+    border: 2px solid var(--white);
     background: transparent;
-    border-radius: 50%;
-    box-shadow: 
-        inset  -1px -1px 10px rgba(95, 91, 91, 0.1), 
-        inset 3px 3px 10px rgba(0,0,0,0.5)
-    ;
-    cursor: pointer;
-    
-}
-
-.list-Btn:hover{
-    transform: scale(1.1);
-}
-
-/* .prev-btn:hover ,.list-Btn:hover{
-    cursor: pointer;
-    animation-name: btnHover;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    
-    @keyframes btnHover {
-        0%{
-            transform: scale(0);
-        }
-
-        100%{
-            transform: scale(0.9);
-        }
-    }
-} */
-
-.prev-btn:hover{
-    color: black;
+    padding: 5px 7px;
 }
 
 .prev-btn:active ,.list-Btn:active,.controls .controlBtn:active{
@@ -137,10 +83,10 @@ button {
     }
 }
 
-/* the track image */
+/* The Track Image Component */
 
 .track-img {
-    background-color: #ff7e9e;
+    background-color: var(--white);
     width:65%;
     height: 13rem;
     border-radius: 12px;
@@ -181,7 +127,7 @@ button {
     display: block;
     height: 20px;
     width: 20px;
-    background-color: #ebebeb;  
+    background-color: var(--white);  
     position: absolute;
     top: 50%;
     left: 50%;
@@ -209,7 +155,7 @@ button {
 }
 
 .progress-container {
-    background-color: #fff; 
+    background-color: var(--white); 
     width: 100%;
     height: 4px;
     border-radius: 5px;
@@ -239,78 +185,78 @@ button {
 }
     
 
-    /* ?the control buttons */
-    .controls{
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    .controls .controlBtn{
-        /* padding: 0.625rem .4rem; */
-     background-color:rgba(95, 91, 91, 0.05);
-     box-shadow:  -3px -3px 2px -2px rgba(255,255,255,0.7),  3px 3px 2px black;
-     color: rgb(10, 4, 99);
-     border: 1px solid rgba(0,0,0,0);
-     outline: none;
-     border-radius: 50%;
-     font-size: 1rem;
-     font-weight: 900;
-     font-family: serif;
-     position: relative;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background: transparent;
-     cursor: pointer;
-     margin: 3px 0 5px;
-     
-    }
-    .controls .controlBtn::after{
-        content: '';
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        background: transparent;
-        border-radius: 50%;
-        box-shadow:inset  -3px -3px 7px rgba(255,255,255,0.7), inset 3px 3px 5px black;
-    }
-    .controls .play{
-        background: lightskyblue;
-        width: 60px;
-        height: 60px;
-        font-size: 2.25rem;
-    }
-    .controls .sub, .controls .add{
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-        font-weight: 200;
-        color: white;
-    }
-    /* .controls .sub:hover, .controls .add:hover{
-        color: black;
-    } */
-    .controls .prev, .controls .next{
-        width: 30px;
-        height: 30px;
-        color: #e61212;
-    }
-    .footer-links{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 8px;
-        padding: 0 4px;
-    }
-.footer-links .btn{
-    color: #5f5c5c;
+/* Control Buttons */
+
+.controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.controls i,
+p {
+    color: var(--white);
+}
+
+.controls .controlBtn{
     background: transparent;
     border: none;
     outline: none;
-    font-size: 1.5rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 900;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 3px 0 5px;
+    color: red; 
+}
+
+.controls p {
+    font-weight: 100;
+    font-size: .8rem;
+}
+
+.controls .play{
+    color: #ff7e9e;
+    height: 50px;
+    width: 50px;
+    font-size: 2rem;
+}
+
+.controls .prev, 
+.controls .next {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+}
+
+/* Footer Component*/
+
+.footer-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 0 4px;
+}
+
+footer i{
+    color: var(--white);
+}
+
+.footer-btn .btn{
+    color: var(--white);
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
     cursor: pointer;
 }
-.footer-links .mult-1{
+
+.footer-btn .fast_btn{
     font-size: 0.8rem;
 }
