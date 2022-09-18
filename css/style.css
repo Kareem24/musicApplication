@@ -219,8 +219,8 @@ button {
 }
 
 .progress {
-    background-color: #fe8daa; 
-    width: 40%;
+    background-color: #ff7e9e; 
+    width: 0%;
     height: 4px;
     border-radius: 5px;
     transition: width 0.1s linear;
