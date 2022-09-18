@@ -46,7 +46,6 @@ button {
 }
 
 /* Navbar component */
-
 .navbar {
     display: flex;
     align-items: center;
@@ -141,7 +140,7 @@ button {
 /* the track image */
 
 .track-img {
-    background-color: #fe8daa;
+    background-color: #ff7e9e;
     width:65%;
     height: 13rem;
     border-radius: 12px;
@@ -182,7 +181,7 @@ button {
     display: block;
     height: 20px;
     width: 20px;
-    background-color: #fff;  
+    background-color: #ebebeb;  
     position: absolute;
     top: 50%;
     left: 50%;
