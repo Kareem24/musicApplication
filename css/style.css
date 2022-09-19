@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --BG-black: #c9c9c9;
+    --black: #212121;
+    --white: #edf2fc;
+}
+
+.dark-theme {
+    --BG-black: #c9c9c9;
+    --black: #edf2fc;
+    --white: #212121;
+}
+
+body{
+    background-color: var(--BG-black);
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.isPlaying {
+    color: #ff7e9e;
+    background-color: red;
+}
+
+main {
+    background: var(--BG-black);
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Music container component */
+.music-container {
+    width: 320px;
+    height: 0;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background-color: var(--black);
+    position: absolute;
+    top: 100vh;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    z-index: 1000;
+    overflow-y: hidden;
+    transition: all .2s linear;
+}
+
+.music-container.hide {
+    height: 100vh;
+    top: 0;
+    opacity: 1;
+}
+
+.list-container{
+    width: 320px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: start;
+    text-transform: capitalize;
+}
+
+.list-container.hide {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.list-container .local_nav{
+    background-color: #494949;
+    width: 320px;
+    position: fixed;
+    margin:  auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 20px;
+}
+
+.list-container .local_navbar {
+    margin-bottom: 10px;
+}
+
+.list-container .local_navbar .back_btn {
+    padding: 7px 5px;
+}
+
+.list-container .search_box input{
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid var(--white);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--white);
+}
+
+.list-container .local_nav .link {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-container .local_nav .link .song_link {
+    display: flex;
+    margin-top: 15px;
+}
+
+.list-container .local_nav .link .song_link small {
+    font-size: .7rem;
+}
+
+.list-container .list-item {
+    margin-top: 110px;
+    padding-bottom: 50px;
+}
+
+.list-container ul {
+    list-style: none;
+}
+
+.list-container ul .box {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.list-container ul .song-info{
+    flex: 2;
+    line-height: .5em;
+    cursor: pointer;
+}
+
+.list-container ul .song-info .music-list {
+    font-size: .9rem;
+}
+
+.list-container ul .song-info .artist{
+    font-size: .7rem;
+    word-spacing: 5px;
+}
+
+/* Navbar component */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.logo {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.nav_btn i {
+    color: var(--white);
+}
+
+.nav_btn  {
+    font-size: 1.2rem;
+    border-radius: 100%;
+    border: 2px solid var(--white);
+    background: transparent;
+    padding: 5px 7px;
+}
+
+.list_btn {
+    font-size: 1.2rem;
+    border-radius: 100%;
+    border: 2px solid var(--white);
+    background: transparent;
+    padding: 5px 7px;
+}
+
+/* The Track Image Component */
+
+.track-img {
+    background-color: var(--white);
+    width: 80%;
+    height: 13rem;
+    border-radius: 12px;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.8);
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.track-img img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    margin: 1rem auto;
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;    
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+.music-container.play .track-img img {
+    animation-play-state: running;
+}
+
+.track-img::after {
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: var(--white);  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+}
+
+.list-container .minimize{
+    background-color: #494949;
+    width: 320px;
+    position: fixed;
+    margin:  auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.list-container .minimize .minimize_box {
+    position: relative;
+}
+
+.list-container .minimize .minimize_box .progress-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-500%);
+}
+
+.list-container .minimize .minimize_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 5px 20px;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.list-container .minimize .minimize_container .play {
+    color: #fff;
+    background-color: #ff7e9e;
+    height: 30px;
+    width: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 100%;
+    border: none;
+    align-self: center;
+    font-size: 1rem;
+}
+
+.list-container .minimize .minimize_container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box .music-info .song-title {
+    margin: 0;
+    margin-left: .5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box .music-info .artist {
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 0.5;
+    margin: .5rem 0 0 .5rem;
+}
+
+/* Music Info Compnent */
+
+.artist{
+    color: var(--white);
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 0.5;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.song-title{
+    color: var(--white);
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 1rem 0 .5rem 0;
+}
+
+.progress-container {
+    background-color: var(--white); 
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    margin-top: 1.2rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.progress {
+    background-color: #ff7e9e; 
+    width: 0%;
+    height: 4px;
+    border-radius: 5px;
+    transition: width 0.1s linear;
+}
+
+.progress-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0 6px;
+    font-size: .9rem;
+}
+
+.progress-time p {
+    color: var(--white);
+}
+    
+
+/* Control Buttons */
+
+.controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.controls i,
+p {
+    color: var(--white);
+}
+
+.controls .controlBtn{
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 900;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 3px 0 5px;
+}
+
+.controls p {
+    font-weight: 100;
+    font-size: .8rem;
+}
+
+.controls .play{
+    background-color: #ff7e9e;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    font-size: 2rem;
+}
+
+.controls .prev, 
+.controls .next {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+}
+
+/* Footer Component*/
+
+.footer-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 4px;
+}
+
+footer i{
+    color: var(--white);
+}
+
+.footer-btn .btn{
+    color: var(--white);
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.footer-btn .fast_btn{
+    font-size: 0.8rem;
+}
+/* Second page styles start from here  */
+.music-container .image-empty{
+    display: block;
+    margin: 10px auto;
+}
+
+.empty-message{
+    margin: 20px auto;
+}
+/* the message for empty bookshelf */
+.empty-message .empty-msg{
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+.empty-message .empty-msg > span{
+    font-weight: 700;
+}
+/* footer message  */
+.footer-message .footer-msg{
+    font-weight: 300;
+    font-size: .7rem;
+    color:  #5f5c5c;
+}
+
+/* List Item Component */
