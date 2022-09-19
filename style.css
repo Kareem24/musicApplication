@@ -254,3 +254,27 @@ button {
 .footer-links .mult-1{
     font-size: 0.8rem;
 }
+
+/* Second page styles start from here  */
+.music-container .image-empty{
+    display: block;
+    margin: 10px auto;
+}
+
+.empty-message{
+    margin: 20px auto;
+}
+/* the message for empty bookshelf */
+.empty-message .empty-msg{
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+.empty-message .empty-msg > span{
+    font-weight: 700;
+}
+/* footer message  */
+.footer-message .footer-msg{
+    font-weight: 300;
+    font-size: .7rem;
+    color:  #5f5c5c;
+}
