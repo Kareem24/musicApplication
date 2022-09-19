@@ -20,25 +20,125 @@
     --white: #212121;
 }
 
-.main {
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.isPlaying {
+    color: #ff7e9e;
+    background-color: red;
+}
+
+main {
     background: var(--BG-black);
     width: 100%;
-    height: 100vh;
     text-align: center;
-    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 /* Music container component */
 
 .music-container {
-    max-width: 300px;
+    width: 320px;
+    height: 0;
+    margin: 0 auto;
+    padding: 20px 15px;
+    background-color: var(--black);
+    box-shadow: 4px 4px 3px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 100vh;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    z-index: 1000;
+    overflow-y: hidden;
+    transition: all .2s linear;
+}
+
+.music-container.hide {
+    height: 100vh;
+    top: 0;
+    opacity: 1;
+}
+
+.list-container{
+    width: 320px;
     height: 100%;
     margin: 0 auto;
     padding: 15px;
     background-color: var(--black);
-    border-radius: 20px;
+    color: var(--white);
     box-shadow: 4px 4px 3px rgba(0,0,0,0.5);
-    position: relative;
+    text-align: start;
+    text-transform: capitalize;
+}
+
+.list-container.hide {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.list-container .local_nav{
+    background-color: #494949;
+    width: 320px;
+    position: fixed;
+    margin:  auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 20px;
+}
+
+.list-container .local_navbar {
+    margin-bottom: 10px;
+}
+
+.list-container .search_box input{
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid var(--white);
+    padding: 5px;
+    border-radius: 5px;
+    color: var(--white);
+}
+
+.list-container .local_nav .link .song_link {
+    display: flex;
+    margin-top: 15px;
+}
+
+.list-container .local_nav .link .song_link small {
+    font-size: .7rem;
+}
+
+.list-container .list-item {
+    padding-top: 110px;
+    padding-bottom: 50px;
+}
+
+.list-container ul {
+    list-style: none;
+}
+
+.list-container ul .song-info{
+    padding-top: 20px;
+    border-bottom: 1px solid #5e5e5e;
+    line-height: .5em;
+    cursor: pointer;
+}
+
+.list-container ul .song-info .music-list {
+    font-size: .9rem;
+}
+
+.list-container ul .song-info .artist{
+    font-size: .7rem;
+    word-spacing: 5px;
 }
 
 /* Navbar component */
@@ -47,7 +147,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .logo {
@@ -67,31 +167,15 @@
     padding: 5px 7px;
 }
 
-.prev-btn:active ,.list-Btn:active,.controls .controlBtn:active{
-    animation-name: btnHover;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    
-    @keyframes btnHover {
-        0%{
-            transform: scale(0);
-        }
-
-        100%{
-            transform: scale(0.9);
-        }
-    }
-}
-
 /* The Track Image Component */
 
 .track-img {
     background-color: var(--white);
-    width:65%;
+    width: 80%;
     height: 13rem;
     border-radius: 12px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.8);
-    margin: 20px auto;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,6 +217,61 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 100%;
+}
+
+.list-container .minimize{
+    background-color: #494949;
+    width: 320px;
+    position: fixed;
+    margin:  auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.list-container .minimize .minimize_box {
+    position: relative;
+}
+
+.list-container .minimize .minimize_box .progress-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-500%);
+}
+
+.list-container .minimize .minimize_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 5px 20px;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.list-container .minimize .minimize_container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box .music-info .song-title {
+    margin: 0;
+    margin-left: .5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.list-container .minimize .minimize_container .minimize_container_box .music-info .artist {
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 0.5;
+    margin: .5rem 0 0 .5rem;
 }
 
 /* Music Info Compnent */
@@ -212,7 +351,6 @@ p {
     justify-content: center;
     cursor: pointer;
     margin: 3px 0 5px;
-    color: red; 
 }
 
 .controls p {
@@ -240,7 +378,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
+    margin-top: 10px;
     padding: 0 4px;
 }
 
@@ -260,3 +398,5 @@ footer i{
 .footer-btn .fast_btn{
     font-size: 0.8rem;
 }
+
+/* List Item Component */
