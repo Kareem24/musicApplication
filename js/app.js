@@ -28,38 +28,7 @@ const closeSlide = document.getElementById('close-btn');
 const openSlide = document.getElementById('open-btn');
 const minimize = document.querySelector('.minimize_container_box');
 const songInfo = document.querySelector('.song-info');
-
-// DarkMode Function
-const toggleMode = () => {
-    document.body.classList.toggle('dark-theme');
-
-    if(document.body.classList.contains('dark-theme')){
-        toggleBtn.querySelector('.fa-solid').classList.remove('fa-sun');
-        toggleBtn.querySelector('.fa-solid').classList.add('fa-moon');
-    }else {
-        toggleBtn.querySelector('.fa-solid').classList.add('fa-sun');
-        toggleBtn.querySelector('.fa-solid').classList.remove('fa-moon');
-    }
-}
-
-//  Close Home Function
-const closeSlides = () => {
-    musicContainer.classList.remove('hide');
-    listContainer.classList.remove('hide');
-}
-
-//  Open Home Function
-const openSlides = () => {
-    musicContainer.classList.add('hide');
-    listContainer.classList.add('hide');
-}
-
-// Add Event Listener
-toggleBtn.addEventListener('click', toggleMode);
-closeSlide.addEventListener('click', closeSlides);
-openSlide.addEventListener('click', openSlides);
-minimize.addEventListener('click', openSlides);
-
+const filter = document.getElementById('search_box');
 
 // Songs
 let songs = [
@@ -114,26 +83,65 @@ let songs = [
         artist: 'codeboyfriend'
     },
 ]
+
+// DarkMode Function
+const toggleMode = () => {
+    document.body.classList.toggle('dark-theme');
+
+    if(document.body.classList.contains('dark-theme')){
+        toggleBtn.querySelector('.fa-solid').classList.remove('fa-sun');
+        toggleBtn.querySelector('.fa-solid').classList.add('fa-moon');
+    }else {
+        toggleBtn.querySelector('.fa-solid').classList.add('fa-sun');
+        toggleBtn.querySelector('.fa-solid').classList.remove('fa-moon');
+    }
+}
+
+//  Close Home Function
+const closeSlides = () => {
+    musicContainer.classList.remove('hide');
+    listContainer.classList.remove('hide');
+}
+
+//  Open Home Function
+const openSlides = () => {
+    musicContainer.classList.add('hide');
+    listContainer.classList.add('hide');
+}
+
+// Add Event Listener
+toggleBtn.addEventListener('click', toggleMode);
+closeSlide.addEventListener('click', closeSlides);
+openSlide.addEventListener('click', openSlides);
+minimize.addEventListener('click', openSlides);
+
 let songIndexNo = 0;
 
 const listSongs = () => {
     songs.map((song) => {
         // Create DOM ELement
-        let div = document.createElement('div')
+        let box = document.createElement('div');
+        let div = document.createElement('div');
         let li = document.createElement('li');
         let p = document.createElement('p');
+        let extension = document.createElement('p')
 
-        // Add Classname
+        // Add 
+        box.className = 'box';
         div.className = 'song-info';
         li.className = 'music-list';
         p.className = 'artist';
+        extension.className = 'extend';
 
         // AppendChild
-        div.appendChild(li)
-        div.appendChild(p)
+        box.appendChild(div);
+        box.appendChild(extension);
+        div.appendChild(li);
+        div.appendChild(p);
         li.appendChild(document.createTextNode(song.title));
         p.appendChild(document.createTextNode(`${song.artist} ${' - '} ${song.title}`));
-
+        extension.appendChild(document.createTextNode('hi'))
+        
         // Add EventListener
         div.addEventListener('click', (id) => {
             songIndex = song.id;
@@ -141,18 +149,10 @@ const listSongs = () => {
             playSong();
             musicContainer.classList.add('hide');
             listContainer.classList.add('hide');
-
-            if (song.id === songIndex) {
-                div.classList.add('isPlaying')
-                div.style.backgroundColor = 'red'
-            }
-
-            console.log(songIndex)
-            console.log(song.id)
         })
         
         // Append to ul
-        list.appendChild(div)
+        list.appendChild(box)
         
         // Append to the Dom
         listItem.appendChild(list)
@@ -282,7 +282,6 @@ const updateCurrentTime = (e) => {
     
 
     songCurrentTime.innerText = `${min}:${sec}`
-    // console.log(roundCurrentTime)
     
 }
 
@@ -303,8 +302,36 @@ const setSnippetProgress = (e) => {
     audio.currentTime = (clickX / width) * duration;
 }
 
+// Filter Songs
+const filterSong  = (e) => {
+    // Get Search Input
+    let text = e.target.value.toLowerCase();
+    // Get All Songs
+    let allSongs = list.getElementsByTagName('div');
+    // Convert collection to array
+    Array.from(allSongs).forEach(function (eachSong) {
+        let songTitle = eachSong.textContent
+        
+        if (songTitle.toLowerCase().indexOf(text) != -1) {
+            eachSong.style.display = 'block'
+        }else {
+            eachSong.style.display = 'none'
+        }
+    })
+}
+
 // Event Listeners
 playBtn.addEventListener('click', () => {
+    const isPlaying = musicContainer.classList.contains('play');
+
+    if (isPlaying) {
+        pauseSong(); 
+    }else {
+        playSong(); 
+    }
+});
+
+playBtn_snippet.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
 
     if (isPlaying) {
@@ -326,3 +353,4 @@ audio.addEventListener('timeupdate', updateCurrentTime)
 progressContainer.addEventListener('click', setProgress);
 progressContainerSnippet.addEventListener('click', setSnippetProgress);
 fastBtn.addEventListener('click', fastForward);
+filter.addEventListener('keyup', filterSong);
