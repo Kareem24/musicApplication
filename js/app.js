@@ -140,7 +140,7 @@ const listSongs = () => {
         div.appendChild(p);
         li.appendChild(document.createTextNode(song.title));
         p.appendChild(document.createTextNode(`${song.artist} ${' - '} ${song.title}`));
-        extension.appendChild(document.createTextNode('hi'))
+        extension.appendChild(document.createTextNode(''))
         
         // Add EventListener
         div.addEventListener('click', (id) => {
