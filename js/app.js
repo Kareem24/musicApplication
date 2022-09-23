@@ -1,6 +1,6 @@
+// Grabbing Element from the DOM
 const musicContainer = document.querySelector('.music-container');
 const listContainer = document.querySelector('.list-container');
-const toggleBtn = document.getElementById('toggle-btn');
 const playBtn = document.getElementById('play');
 const playBtn_snippet = document.getElementById('play-snippet');
 const prevBtn = document.getElementById('prev');
@@ -16,7 +16,6 @@ const title_snippet = document.getElementById('title-snippet');
 const audio = document.getElementById('audio');
 const songCurrentTime = document.getElementById('currentTime');
 const songDuration = document.getElementById('duration');
-const fastBtn = document.querySelector('.fast_btn');
 const cover = document.getElementById('cover');
 const cover_snippet = document.getElementById('cover-snippet');
 const listItem = document.getElementById('list-item');
@@ -82,20 +81,7 @@ let songs = [
         title: 'moonlight',
         artist: 'codeboyfriend'
     },
-]
-
-// DarkMode Function
-const toggleMode = () => {
-    document.body.classList.toggle('dark-theme');
-
-    if(document.body.classList.contains('dark-theme')){
-        toggleBtn.querySelector('.fa-solid').classList.remove('fa-sun');
-        toggleBtn.querySelector('.fa-solid').classList.add('fa-moon');
-    }else {
-        toggleBtn.querySelector('.fa-solid').classList.add('fa-sun');
-        toggleBtn.querySelector('.fa-solid').classList.remove('fa-moon');
-    }
-}
+];
 
 //  Close Home Function
 const closeSlides = () => {
@@ -110,7 +96,6 @@ const openSlides = () => {
 }
 
 // Add Event Listener
-toggleBtn.addEventListener('click', toggleMode);
 closeSlide.addEventListener('click', closeSlides);
 openSlide.addEventListener('click', openSlides);
 minimize.addEventListener('click', openSlides);
@@ -180,6 +165,7 @@ function loadSong(song) {
     cover_snippet.src = `images/${song.title}.jpg`;
 }
 
+// Play Function
 function playSong() {
     musicContainer.classList.add('play');
     playBtn.querySelector('.fa-solid').classList.add('fa-pause');
@@ -190,6 +176,7 @@ function playSong() {
     audio.play();
 }
 
+// Pause Function
 function pauseSong() {
     musicContainer.classList.remove('play');
     playBtn.querySelector('.fa-solid').classList.remove('fa-pause');
@@ -200,6 +187,7 @@ function pauseSong() {
     audio.pause();
 }
 
+// Prev Function
 const prevSong = () => {
     songIndex = songIndex - 1;
 
@@ -212,6 +200,7 @@ const prevSong = () => {
     playSong();
 };
 
+// Next Function
 const nextSong = () => {
     songIndex = songIndex + 1;
 
@@ -224,26 +213,17 @@ const nextSong = () => {
     playSong();
 };
 
-const updateProgress = (e) => {
-    const { duration, currentTime } = e.srcElement;
-    const progressPercent = (currentTime / duration) * 100;
-    progress.style.width = `${progressPercent}%`;
-    progress_snippet.style.width = `${progressPercent}%`;
-};
-
+// Prev by 30Seconds function
 const prevSec = () => {
     audio.currentTime = audio.currentTime - 30.000
 }
 
+// Next by 30seconds function
 const nextSec = () => {
     audio.currentTime = audio.currentTime + 30.000
 }
 
-const fastForward = () => {
-    let test = (audio.duration / 3 )
-    audio.duration = test
-}
-
+// Time duration function
 const updateDuration = (e) => {
     let duration = 0;
     duration = e.srcElement.duration;
@@ -261,6 +241,7 @@ let time = 0
 let sec = 0;
 let min = 0;
 
+// Not yet implemented
 const updateCurrentTime = (e) => {
     let { currentTime } = e.srcElement;
     let roundCurrentTime = Math.floor(currentTime);
@@ -285,6 +266,13 @@ const updateCurrentTime = (e) => {
     
 }
 
+// Progress Function
+const updateProgress = (e) => {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+    progress_snippet.style.width = `${progressPercent}%`;
+};
 
 const setProgress = (e) => {
     const width = progressContainer.clientWidth;
@@ -341,7 +329,7 @@ playBtn_snippet.addEventListener('click', () => {
     }
 });
 
-// Change Song event
+// Event Listeners
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 prevBtnSec.addEventListener('click', prevSec);
@@ -352,5 +340,4 @@ audio.addEventListener('timeupdate', updateDuration);
 audio.addEventListener('timeupdate', updateCurrentTime)
 progressContainer.addEventListener('click', setProgress);
 progressContainerSnippet.addEventListener('click', setSnippetProgress);
-fastBtn.addEventListener('click', fastForward);
 filter.addEventListener('keyup', filterSong);
