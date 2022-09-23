@@ -19,7 +19,11 @@ const songDuration = document.getElementById('duration');
 const cover = document.getElementById('cover');
 const cover_snippet = document.getElementById('cover-snippet');
 const listItem = document.getElementById('list-item');
+const favorite = document.getElementById('favorite-item');
+const playList = document.getElementById('playlist-item');
 const list = document.getElementById('list');
+const favoriteList = document.getElementById('favorite');
+const playlistList = document.getElementById('playlist');
 const artist = document.getElementById('artist');
 const artist_snippet = document.getElementById('artist-snippet');
 let small = document.getElementById('small');
@@ -28,6 +32,47 @@ const openSlide = document.getElementById('open-btn');
 const minimize = document.querySelector('.minimize_container_box');
 const songInfo = document.querySelector('.song-info');
 const filter = document.getElementById('search_box');
+
+// let swiper = new Swiper(".folder_swiper", {
+//     loop: true,
+//     grapeCursor: true,
+//     navigation: {
+//       nextEl: ".swiper-button-next",
+//       prevEl: ".swiper-button-prev",
+//     },
+//     // slidesPerView: 1,
+//     //     spaceBetween: 10,
+//     //     pagination: {
+//     //       el: ".swiper-pagination",
+//     //       clickable: true,
+//     //     },
+//         breakpoints: {
+//           0: {
+//             slidesPerView: 1,
+//           },
+//           1024: {
+//             slidesPerView: 2,
+//         },
+// );
+
+const swiper = new Swiper('.folder_swiper', {
+    // Optional parameters
+    // direction: 'vertical',
+    loop: true,
+    grapeCursor: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+          0: {
+            slidesPerView: 1,
+          },
+          1024: {
+            slidesPerView: 2,
+        },
+    }
+});
 
 // Songs
 let songs = [
@@ -138,9 +183,13 @@ const listSongs = () => {
         
         // Append to ul
         list.appendChild(box)
+        favoriteList.appendChild(box)
+        playlistList.appendChild(box)
         
         // Append to the Dom
         listItem.appendChild(list)
+        favorite.appendChild(list)
+        playList.appendChild(list)
     })
 }
 

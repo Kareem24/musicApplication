@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Swiper Link -->
+    <link rel="stylesheet"nhref="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+    <!-- Fontawesome Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://kit.fontawesome.com/b2921967f9.js" crossorigin="anonymous"></script>
 </head>
@@ -95,8 +100,37 @@
                 </div>
             </div>
 
-            <div class="list-item" id="list-item">
-                <ul id="list"></ul>
+            <div class="swiper .folder_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide list-item" id="list-item">
+                        <ul id="list"></ul>
+                    </div>
+                    <div class="swiper-slide list-item" id="favorite-item">
+                        <ul id="favorite">
+                            <li>Codeboyfriend</li>
+                            <li>Mking</li>
+                            <li>Michael</li>
+                            <li>Photographer</li>
+                            <li>Accountant</li>
+                            <li>Programmer</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide list-item" id="playlist-item">
+                        <ul id="playlist">
+                            <li>Codeboyfriend</li>
+                            <li>Mking</li>
+                            <li>Michael</li>
+                            <li>Photographer</li>
+                            <li>Accountant</li>
+                            <li>Programmer</li>
+                        </ul>
+                    </div>
+
+                    
+                    <div class="swiper-pagination"></div>
+                    <!-- <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
+                </div>
             </div>
 
             <div class="minimize">
@@ -125,7 +159,9 @@
 
         </div>
     </main>
+
     
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
