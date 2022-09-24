@@ -153,8 +153,10 @@ main {
 .list-container ul .box {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 20px;
     border-bottom: 1px solid #5e5e5e;
+    position: relative;
 }
 
 .list-container ul .song-info{
@@ -429,11 +431,16 @@ p {
 /* PopUp style */
 .popBox {
     background-color: var(--box);
-    padding: 5px 10px;
+    padding: 5px;
     font-size: .9rem;
+    display: none;
 }
 
 .popBox .popItem {
     margin: .5rem;
     cursor: pointer;
+}
+
+.extension-container {
+    display: block;
 }
