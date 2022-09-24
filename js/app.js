@@ -33,46 +33,14 @@ const minimize = document.querySelector('.minimize_container_box');
 const songInfo = document.querySelector('.song-info');
 const filter = document.getElementById('search_box');
 
-// let swiper = new Swiper(".folder_swiper", {
-//     loop: true,
-//     grapeCursor: true,
-//     navigation: {
-//       nextEl: ".swiper-button-next",
-//       prevEl: ".swiper-button-prev",
-//     },
-//     // slidesPerView: 1,
-//     //     spaceBetween: 10,
-//     //     pagination: {
-//     //       el: ".swiper-pagination",
-//     //       clickable: true,
-//     //     },
-//         breakpoints: {
-//           0: {
-//             slidesPerView: 1,
-//           },
-//           1024: {
-//             slidesPerView: 2,
-//         },
-// );
-
-const swiper = new Swiper('.folder_swiper', {
-    // Optional parameters
-    // direction: 'vertical',
-    loop: true,
-    grapeCursor: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+// Swiper Functionality
+let swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
     },
-    breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          1024: {
-            slidesPerView: 2,
-        },
-    }
-});
+    });
 
 // Songs
 let songs = [
@@ -128,6 +96,35 @@ let songs = [
     },
 ];
 
+// Favorite songs
+let favoriteSong = [
+    {
+        id: 0,
+        title: 'hey',
+        artist: 'codeboyfriend'
+    },
+    {
+        id: 1,
+        title: 'hello',
+        artist: 'codeboyfriend'
+    },
+    {
+        id: 2,
+        title: 'world',
+        artist: 'codeboyfriend'
+    },
+    {
+        id: 3,
+        title: 'love',
+        artist: 'codeboyfriend'
+    },
+    {
+        id: 4,
+        title: 'hate',
+        artist: 'codeboyfriend'
+    }
+]; 
+
 //  Close Home Function
 const closeSlides = () => {
     musicContainer.classList.remove('hide');
@@ -155,13 +152,22 @@ const listSongs = () => {
         let li = document.createElement('li');
         let p = document.createElement('p');
         let extension = document.createElement('p')
+        // Create popup 
+        let popBox = document.createElement('div');
+        let popItemOne = document.createElement('p');
+        let popItemTwo = document.createElement('p');
+        let popItemThree = document.createElement('p');
 
-        // Add 
+        // Add Class Name
         box.className = 'box';
         div.className = 'song-info';
         li.className = 'music-list';
         p.className = 'artist';
         extension.className = 'extend';
+        popBox.className = 'popBox';
+        popItemOne.className = 'popItem';
+        popItemTwo.className = 'popItem';
+        popItemThree.className = 'popItem';
 
         // AppendChild
         box.appendChild(div);
@@ -170,7 +176,17 @@ const listSongs = () => {
         div.appendChild(p);
         li.appendChild(document.createTextNode(song.title));
         p.appendChild(document.createTextNode(`${song.artist} ${' - '} ${song.title}`));
-        extension.appendChild(document.createTextNode(''))
+        extension.appendChild(document.createTextNode('p'));
+        popBox.appendChild(popItemOne);
+        popBox.appendChild(popItemTwo);
+        popBox.appendChild(popItemThree);
+        popItemOne.appendChild(document.createTextNode('Favorite'));
+        popItemTwo.appendChild(document.createTextNode('Add to playlist'));
+        popItemThree.appendChild(document.createTextNode('Delete'));
+        
+        // <i class="fa-regular fa-heart"></i>
+        // <i class="fa-regular fa-square-plus"></i>
+        // <i class="fa-solid fa-trash-can"></i>
         
         // Add EventListener
         div.addEventListener('click', (id) => {
@@ -183,13 +199,14 @@ const listSongs = () => {
         
         // Append to ul
         list.appendChild(box)
-        favoriteList.appendChild(box)
-        playlistList.appendChild(box)
+        list.appendChild(popBox)
+        // favoriteList.appendChild(box)
+        // playlistList.appendChild(box)
         
         // Append to the Dom
         listItem.appendChild(list)
-        favorite.appendChild(list)
-        playList.appendChild(list)
+        // favorite.appendChild(list)
+        // playList.appendChild(list)
     })
 }
 

@@ -13,6 +13,7 @@
     --BG-black: #c9c9c9;
     --black: #212121;
     --white: #edf2fc;
+    --box: #494949;
 }
 
 .dark-theme {
@@ -33,6 +34,17 @@ a {
 .isPlaying {
     color: #ff7e9e;
     background-color: red;
+}
+
+  /* Swiper Styling */
+.swiper {
+width: 100%;
+height: 100%;
+z-index: 1;
+}
+
+.swiper-pagination {
+    display: none;
 }
 
 main {
@@ -77,6 +89,7 @@ main {
     color: var(--white);
     text-align: start;
     text-transform: capitalize;
+    position: relative;
 }
 
 .list-container.hide {
@@ -85,7 +98,7 @@ main {
 }
 
 .list-container .local_nav{
-    background-color: #494949;
+    background-color: var(--box);
     width: 320px;
     position: fixed;
     margin:  auto;
@@ -93,6 +106,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     padding: 15px 20px;
+    z-index: 900;
 }
 
 .list-container .local_navbar {
@@ -245,13 +259,14 @@ main {
 }
 
 .list-container .minimize{
-    background-color: #494949;
+    background-color: var(--box);
     width: 320px;
     position: fixed;
     margin:  auto;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 900;
 }
 
 .list-container .minimize .minimize_box {
@@ -409,4 +424,16 @@ p {
     width: 30px;
     height: 30px;
     font-size: 1rem;
+}
+
+/* PopUp style */
+.popBox {
+    background-color: var(--box);
+    padding: 5px 10px;
+    font-size: .9rem;
+}
+
+.popBox .popItem {
+    margin: .5rem;
+    cursor: pointer;
 }
