@@ -241,14 +241,15 @@ const listSongs = () => {
         });
 
         popItemTwo.addEventListener('click', () => {
-            playListSongs =[ 
+            playListSongs = [ 
                 ...playListSongs, 
                 {
                   id: Math.floor(Math.random() * 100),
-                  title: song.title,
+                  title: 'song.title',
                   artist: 'codeboyfriend'  
                 }
             ]
+            paSongs()
         });
 
         popItemThree.addEventListener('click', deleteHandler);
@@ -258,11 +259,10 @@ const listSongs = () => {
         list.appendChild(popBox);
     })
 }
-
 // Delete Handler Function
 const deleteHandler = (id) => {
     songs.filter((el) => el.id !== id)
-  }
+}
 
 const faSongs = () => {
     favoriteSongs.map((favoriteSong) => {
